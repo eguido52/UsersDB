@@ -20,13 +20,19 @@ public class UsersController {
     public List<Users> getAll(){
         List<Users> result = usersRepo.findAll();
         return result;
-
     }
 
     @GetMapping("/user/{id}")
-    public Users getChipById(@PathVariable String id)
+    public Users getUserById(@PathVariable String id)
     {
         Users result = usersRepo.findByRepoId(id);
+        return result;
+    }
+
+    @GetMapping("/users/{name}")
+    public List<Users> getUserByName(@PathVariable String name)
+    {
+        List<Users> result = usersRepo.findByUserName(name);
         return result;
     }
 }
